@@ -6,7 +6,7 @@
   "module": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/plangrid/react-file-viewer.git"
+    "url": "git+https://github.com/lcorniglione/react-file-viewer"
   },
   "scripts": {
     "dev": "webpack -d --watch",
@@ -35,9 +35,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/plangrid/react-file-viewer/issues"
+    "url": "https://github.com/lcorniglione/react-file-viewer/issues"
   },
-  "homepage": "https://github.com/plangrid/react-file-viewer#readme",
+  "homepage": "https://github.com/lcorniglione/react-file-viewer#readme",
   "devDependencies": {
     "autoprefixer": "^7.1.0",
     "babel-core": "^6.24.1",
