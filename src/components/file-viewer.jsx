@@ -86,6 +86,8 @@ FileViewer.propTypes = {
   fileType: PropTypes.string.isRequired,
   filePath: PropTypes.string.isRequired,
   onError: PropTypes.func,
+  headers: PropTypes.object,
+  loaderComponent: PropTypes.element,
   errorComponent: PropTypes.element,
   unsupportedComponent: PropTypes.element,
 };
@@ -93,6 +95,8 @@ FileViewer.propTypes = {
 FileViewer.defaultProps = {
   onError: () => null,
   errorComponent: null,
+  loaderComponent: null,
+  headers: {},
   unsupportedComponent: null,
 };
 

@@ -71,6 +71,9 @@ function withFetching(WrappedComponent, props) {
     }
 
     render() {
+      const { loaderComponent } = this.props;
+      let loading = <Loading />;
+      if (loaderComponent) loading = loaderComponent;
       if (!this.xhr) {
         return <h1>CORS not supported..</h1>;
       }
@@ -83,7 +86,7 @@ function withFetching(WrappedComponent, props) {
         return <WrappedComponent data={this.state.data} {...this.props} />;
       }
       return (
-        <Loading />
+        loading
       );
     }
   };

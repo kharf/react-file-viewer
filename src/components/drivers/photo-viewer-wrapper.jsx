@@ -26,21 +26,31 @@ export default class PhotoViewerWrapper extends Component {
   }
 
   componentDidMount() {
+    const { headers } = this.props;
     // spike on using promises and a different loader or adding three js loading manager
-    const loader = new THREE.TextureLoader();
+    const loader = new THREE.FileLoader();
     loader.crossOrigin = '';
+    loader.mimeType = 'image/png';
+    loader.responseType = 'blob';
+    if (headers) loader.requestHeader = headers;
     // load a resource
     loader.load(
       // resource URL
       this.props.filePath,
       // Function when resource is   loaded
-      (texture) => {
-        this.setState({
-          originalWidth: texture.image.width,
-          originalHeight: texture.image.height,
-          imageLoaded: true,
-          texture,
-        });
+      (response) => {
+        const image = new Image();
+        const blobUrl = URL.createObjectURL(response);
+        image.onload = function () {
+          const texture = new THREE.Texture(image);
+          this.setState({
+            originalWidth: texture.image.width,
+            originalHeight: texture.image.height,
+            imageLoaded: true,
+            texture,
+          });
+        }.bind(this);
+        image.src = blobUrl;
       },
       (xhr) => {
         console.log(`${xhr.loaded / xhr.total * 100}% loaded`);
@@ -53,6 +63,7 @@ export default class PhotoViewerWrapper extends Component {
 
   render() {
     if (!this.state.imageLoaded) {
+      if (this.props.loaderComponent) return this.props.loaderComponent;
       return <Loading />;
     }
     const { originalWidth, originalHeight } = this.state;

@@ -8,8 +8,14 @@ import Loading from '../loading';
 
 export default class extends Component {
   componentDidMount() {
+    const { headers, filePath } = this.props;
     const jsonFile = new XMLHttpRequest();
-    jsonFile.open('GET', this.props.filePath, true);
+    jsonFile.open('GET', filePath, true);
+    if (headers) {
+      for (const prop in headers) {
+        jsonFile.setRequestHeader(prop, headers[prop]);
+      }
+    }
     jsonFile.send();
     jsonFile.responseType = 'arraybuffer';
     jsonFile.onreadystatechange = () => {
@@ -18,24 +24,25 @@ export default class extends Component {
           { arrayBuffer: jsonFile.response },
           { includeDefaultStyleMap: true },
         )
-        .then((result) => {
-          const docEl = document.createElement('div');
-          docEl.className = 'document-container';
-          docEl.innerHTML = result.value;
-          document.getElementById('docx').innerHTML = docEl.outerHTML;
-        })
-        .catch((a) => {
-          console.log('alexei: something went wrong', a);
-        })
-        .done();
+          .then((result) => {
+            const docEl = document.createElement('div');
+            docEl.className = 'document-container';
+            docEl.innerHTML = result.value;
+            document.getElementById('docx').innerHTML = docEl.outerHTML;
+          })
+          .catch((a) => {
+            console.log('alexei: something went wrong', a);
+          })
+          .done();
       }
     };
   }
 
   render() {
+    const { loaderComponent } = this.props;
     return (
       <div id="docx">
-        <Loading />
+        {loaderComponent ? loaderComponent : <Loading />}
       </div>);
   }
 }
