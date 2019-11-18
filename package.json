@@ -1,6 +1,6 @@
 {
   "name": "@lcorniglione/react-file-viewer",
-  "version": "4.0.0",
+  "version": "1.1.0",
   "description": "Extendable file viewer for web",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -17,7 +17,7 @@
     "jest": "node_modules/.bin/jest --env=jsdom",
     "tag-and-publish": "node ./scripts/publish.js"
   },
-  "author": "PlanGrid <opensource@plangrid.com>",
+  "author": "Luciano Corniglione <luciano.corniglione@gmail.com>",
   "contributors": [
     {
       "name": "Alexei Schiopu",
