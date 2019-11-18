@@ -3,6 +3,8 @@
 
 Extendable file viewer for web
 
+`Project Forked: I added custom features to fit my needs`
+
 ## Supported file formats:
 
  - Images: png, jpeg, gif, bmp, including 360-degree images
@@ -36,6 +38,10 @@ instead of the default error component that comes packaged with react-file-viewe
 `unsupportedComponent` react element [optional]: A component to render in case
 the file format is not supported.
 
+`loaderComponent` react element [optional]: A component to render when the documents is being fetched. If it is not supplied, the default loader will be rendered.
+
+`headers` object [optional]: Object to be used as headers when the documents are fetched. [ONLY SUPPORTED FOR .pdf .docx .jpeg .png FILES]. For example can be used to pass Authorization Hedears.
+
 To use a custom error component, you might do the following:
 
 ```
@@ -54,6 +60,8 @@ class MyComponent extends Component {
       <FileViewer
         fileType={type}
         filePath={file}
+        loaderComponent={CustomLoaderComponent}
+        headers={{Authorization: 'Bearer MY_TOKEN', .... .... }}
         errorComponent={CustomErrorComponent}
         onError={this.onError}/>
     );
