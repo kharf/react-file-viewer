@@ -25,7 +25,7 @@ inquirer.prompt([
     default: 0,
     choices: ['Abort', 'patch', 'minor', 'major']
   }
-]).then(function(answers) {
+]).then(function (answers) {
   const answer = answers.publish;
 
   if (answer === 'Abort') {
@@ -76,7 +76,7 @@ inquirer.prompt([
   // publish
   try {
     console.log(runColor('publishing to npm'));
-    execSync('npm publish', execOpts);
+    execSync('npm publish --access public', execOpts);
   } catch (e) {
     console.log(errColor('Publishing failed'));
     return;
