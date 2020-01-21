@@ -3,8 +3,6 @@
 
 Extendable file viewer for web
 
-`Project Forked: I added custom features to fit my needs`
-
 ## Supported file formats:
 
  - Images: png, jpeg, gif, bmp, including 360-degree images
@@ -15,41 +13,33 @@ Extendable file viewer for web
  - Video: mp4, webm
  - Audio: mp3
 
+## Installation
+
+```shell
+$ npm i @marcioferlan/react-file-viewer
+```
 
 ## Usage
 
-Note this module works best with react 16+.  If you are using React < 16 you will likely need to use version 0.5. `npm install react-file-viewer@0.5.0`.
-
 There is one main React component, `FileViewer`, that takes the following props:
 
-`fileType` string: type of resource to be shown (one of the supported file
-formats, eg `'png'`). Passing in an unsupported file type will result in displaying
-an `unsupported file type` message (or a custom component).
-
-`filePath` string: the url of the resource to be shown by the FileViewer.
-
-`onError` function [optional]: function that will be called when there is an error in the file
-viewer fetching or rendering the requested resource. This is a place where you can
-pass a callback for a logging utility.
-
-`errorComponent` react element [optional]: A component to render in case of error
-instead of the default error component that comes packaged with react-file-viewer.
-
-`unsupportedComponent` react element [optional]: A component to render in case
-the file format is not supported.
-
-`loaderComponent` react element [optional]: A component to render when the documents is being fetched. If it is not supplied, the default loader will be rendered.
-
-`headers` object [optional]: Object to be used as headers when the documents are fetched. [ONLY SUPPORTED FOR .pdf .docx .jpeg .png FILES]. For example can be used to pass Authorization Hedears.
+|Prop|Type|Required|Description|
+|-|-|-|-|
+|`fileType`|string|Yes|Type of resource to be shown (one of the supported file formats, eg `'png'`). Passing in an unsupported file type will result in displaying an `unsupported file type` message (or a custom component).|
+|`filePath`|string|Yes|The url of the resource to be shown by the FileViewer.|
+|`onError`|function|No|Function that will be called when there is an error in the file viewer fetching or rendering the requested resource. This is a place where you can pass a callback for a logging utility.|
+|`errorComponent`|react element|No|A component to render in case of error instead of the default error component that comes packaged with react-file-viewer.|
+|`unsupportedComponent`|react element|No|A component to render in case the file format is not supported.|
+|`loaderComponent`|react element|No|A component to render when the documents is being fetched. If it is not supplied, the default loader will be rendered.|
+|`headers`|object|No|Object to be used as headers when the documents are fetched. [ONLY SUPPORTED FOR .pdf .docx .jpeg .png FILES]. For example can be used to pass Authorization Headers.|
 
 To use a custom error component, you might do the following:
 
-```
+```jsx
 // MyApp.js
 import React, { Component } from 'react';
-import logger from 'logging-library';
-import FileViewer from 'react-file-viewer';
-import { CustomErrorComponent } from 'custom-error';
+import FileViewer from '@marcioferlan/react-file-viewer';
+import { CustomErrorComponent } from './custom-error';
 
 const file = 'http://example.com/image.png'
 const type = 'png'
@@ -60,15 +50,15 @@ class MyComponent extends Component {
       <FileViewer
         fileType={type}
         filePath={file}
+        headers={{ Authorization: 'Bearer MY_TOKEN' }}
         loaderComponent={CustomLoaderComponent}
-        headers={{Authorization: 'Bearer MY_TOKEN', .... .... }}
         errorComponent={CustomErrorComponent}
         onError={this.onError}/>
     );
   }
 
   onError(e) {
-    logger.logError(e, 'error in file-viewer');
+    console.log(e, 'error in file-viewer');
   }
 }
 ```
