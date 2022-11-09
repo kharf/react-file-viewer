@@ -16,7 +16,7 @@ Extendable file viewer for web
 ## Installation
 
 ```shell
-$ npm i @marcioferlan/react-file-viewer
+$ npm i @kharf/react-file-viewer
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ To use a custom error component, you might do the following:
 ```jsx
 // MyApp.js
 import React, { Component } from 'react';
-import FileViewer from '@marcioferlan/react-file-viewer';
+import FileViewer from '@kharf/react-file-viewer';
 import { CustomErrorComponent } from './custom-error';
 
 const file = 'http://example.com/image.png'
