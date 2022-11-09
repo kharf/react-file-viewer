@@ -1,6 +1,6 @@
 {
   "name": "@kharf/react-file-viewer",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Extendable file viewer for web",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -72,7 +72,7 @@
   "dependencies": {
     "comma-separated-values": "^3.6.4",
     "mammoth": "^1.4.9",
-    "pdfjs-dist": "^3.0.279",
+    "pdfjs-dist": "^1.9.661",
     "prop-types": "^15.5.10",
     "react-data-grid": "^5.0.5",
     "react-visibility-sensor": "^5.0.2",
