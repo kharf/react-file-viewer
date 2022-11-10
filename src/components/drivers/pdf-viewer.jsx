@@ -2,8 +2,8 @@
 
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-
-const PDFJS = require('pdfjs-dist');
+import { PDFJS } from 'pdfjs-dist/build/pdf.combined';
+import 'pdfjs-dist/web/compatibility';
 
 PDFJS.disableWorker = true;
 const INCREASE_PERCENTAGE = 0.2;
