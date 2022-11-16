@@ -1,6 +1,6 @@
 {
   "name": "@kharf/react-file-viewer",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "description": "Extendable file viewer for web",
   "main": "dist/index.js",
   "module": "dist/index.js",
